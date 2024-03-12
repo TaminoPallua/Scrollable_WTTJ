@@ -1,0 +1,43 @@
+body {
+  background-color: #333333;
+  margin: 0;
+  padding: 2px;
+}
+img {
+  width: 280px;
+  height: auto;
+  position: relative;
+  margin-top: 18vh;
+}
+#Station_1 {
+  width: 280px;
+  height: 280px;
+  /* border: 1px solid black; */
+  position: relative;
+  top: -50%;
+  left: 68%;
+}
+
+#Top-Level {
+  background-image: url(/images/EbeneLevel01.png);
+  background-size: 100% 105%;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  border: 1px solid rgb(16, 255, 8);
+  height: 50vh;
+}
+#Mid-Level {
+  border: 1px solid rgb(16, 255, 8);
+  height: 50vh;
+}
+
+#Mid2-Level {
+  /* background-image: url(/images/Ebene1\(final\).png); */
+  border: 1px solid rgb(16, 255, 8);
+  height: 50vh;
+}
+#Bottom-Level {
+  /* background-image: url(/images/Ebene1\(final\).png); */
+  border: 1px solid rgb(16, 255, 8);
+  height: 50vh;
+}
