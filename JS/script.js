@@ -10,10 +10,10 @@ window.addEventListener(
 ); // Option, um das Standardverhalten zu verhindern
 
 //-------------------- VEHICLE VARIABLES ----------------------------//
-let isMoving = false;
 const vehicle = document.getElementById('vehicle'); // Fahrzeug holen
 console.log(vehicle.naturalWidth);
 let positionX = 50; // Startposition
+let isMoving = false;
 let firstTurned = false; // Schauen ob das Fahrzeug gedreht ist
 const screenWidth = window.innerWidth; // Bildschirmbreite hole
 let endNotReached = true; // Schauen ob der Bagger das Ende erreicht hat
@@ -28,7 +28,7 @@ let ebenen = 4; // Gesamtanzahl Ebenen
 const levelHeight = 100 / ebenen; // Höhe jeder Ebene in vh (Viewport Height), für 4 Ebenen
 
 //  //-------------------- AUDIO VARIABLES ----------------------------//
-let engineAudio = new Audio('/audio/EngineSound.mp3');
+var engineAudio = new Audio('/audio/EngineSound.mp3');
 var level0Audio = new Audio('/audio/Level0Background.mp3');
 var level1Audio = new Audio('/audio/Level1Background.mp3');
 var level2Audio = new Audio('/audio/Level2Background.mp3');
@@ -42,8 +42,8 @@ let isPLayingSound4 = false;
 
 document.addEventListener('wheel', (event) => {
   //-------------------- VEHICLE MOVEMENT ----------------------------//
-  let direction = event.deltaY > 0 ? 1 : -1; // Vorwärts oder rückwärts
   isMoving = true;
+  let direction = event.deltaY > 0 ? 1 : -1; // Vorwärts oder rückwärts
   // Drehung des Fahrzeuges
   if (direction === 1) {
     // Wenn das Fahrzeug geradeaus fährt
@@ -89,20 +89,20 @@ document.addEventListener('wheel', (event) => {
     window.scrollBy(0, window.innerHeight / 2);
   }
 
-  
+
   //-------------------- VEHICLE SOUNDS ----------------------------//
 
-  // if (isMoving && engineAudio.paused) {
-  //   engineAudio.play();
-  //   engineAudio.volume = 0.03;
-  //   isEngineSoundPlaying = true;
-  // }
+  if (isMoving && engineAudio.paused) {
+    engineAudio.play();
+    engineAudio.volume = 0.03;
+    isEngineSoundPlaying = true;
+  }
 
-  // // Wenn das Fahrzeug sich nicht bewegt und der Motorsound spielt
-  // if (!isMoving && !engineAudio.paused) {
-  //   engineAudio.pause();
-  //   isEngineSoundPlaying = false;
-  // }
+  // Wenn das Fahrzeug sich nicht bewegt und der Motorsound spielt
+  if (!isMoving && !engineAudio.paused) {
+    engineAudio.pause();
+    isEngineSoundPlaying = false;
+  }
 
   
 
