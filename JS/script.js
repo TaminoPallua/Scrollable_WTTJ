@@ -89,7 +89,6 @@ document.addEventListener('wheel', (event) => {
     window.scrollBy(0, window.innerHeight / 2);
   }
 
-
   //-------------------- VEHICLE SOUNDS ----------------------------//
 
   if (isMoving && engineAudio.paused) {
@@ -103,8 +102,6 @@ document.addEventListener('wheel', (event) => {
     engineAudio.pause();
     isEngineSoundPlaying = false;
   }
-
-  
 
   //-------------------- BACKGROUND NOISES ----------------------------//
   if (level == 0 && isPLayingSound1 == false) {
