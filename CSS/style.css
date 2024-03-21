@@ -6,10 +6,8 @@ body {
 #vehicle {
   width: 280px;
   height: auto;
-  position: relative;
-  margin-top: 10%;
-  z-index: 1;
-
+  position: absolute;
+  margin-top: 22vh;
   z-index: 0;
 }
 
