@@ -161,21 +161,74 @@ document.addEventListener('wheel', (event) => {
   //-------------------- STATION VERLINKUNG ----------------------------//
 
   //Vehicle X-Koordinate
-  // let vehicleRect = vehicle.getBoundingClientRect();
-  // let xCoordinateVehicle = vehicleRect.left;
+  let vehicleRect = vehicle.getBoundingClientRect();
+  let xCoordinateVehicle = vehicleRect.left;
+  let yCoordinateVehicle = vehicleRect.top;
 
-  // //Station 1 -- Erstes Minigame
-  // let station1 = document.getElementById('Station_1');
-  // var station1rect = station1.getBoundingClientRect();
-  // let xCoordinateStation1 = station1rect.left;
+  //Station 1 -- Erstes Minigame
+  let station1 = document.getElementById('Station_1');
+  var station1rect = station1.getBoundingClientRect();
+  let xCoordinateStation1 = station1rect.left;
+  let yCoordinateStation1 = station1rect.top;
 
-  // //Vergleich für Erste Station
-  // station1.addEventListener('click', () => {
-  //   if (
-  //     xCoordinateVehicle >= xCoordinateStation1 &&
-  //     xCoordinateVehicle <= xCoordinateStation1 + 280
-  //   ) {
-  //     window.location = 'index2.html';
-  //   }
-  // });
+  //Station 2 -- Zweites Minigame
+  let station2 = document.getElementById('Station_2');
+  var station2rect = station2.getBoundingClientRect();
+  let xCoordinateStation2 = station2rect.left;
+  let yCoordinateStation2 = station2rect.top;
+  
+  //Station 3 -- Drittes Minigame
+  let station3 = document.getElementById('Station_3');
+  var station3rect = station3.getBoundingClientRect();
+  let xCoordinateStation3 = station3rect.left;
+  let yCoordinateStation3 = station3rect.top;
+
+
+  //Station 4 -- Viertes Minigame
+  let station4 = document.getElementById('Station_4');
+  var station4rect = station4.getBoundingClientRect();
+  let xCoordinateStation4 = station4rect.left;
+  let yCoordinateStation4 = station4rect.top;
+
+
+  //Vergleich für Erste Station
+  station1.addEventListener('click', () => {
+    if (
+      xCoordinateVehicle >= xCoordinateStation1 &&
+      xCoordinateVehicle <= xCoordinateStation1 + 280 &&
+      yCoordinateVehicle >= yCoordinateStation1 
+    ) {
+      window.location = 'index2.html';
+    }
+  });
+
+  station2.addEventListener('click', () => {
+    if (
+      xCoordinateVehicle >= xCoordinateStation2 &&
+      xCoordinateVehicle <= xCoordinateStation2 + 280 &&
+      yCoordinateVehicle >= yCoordinateStation2 
+    ) {
+      window.location = 'index3.html';
+    }
+  });
+
+  station3.addEventListener('click', () => {
+    if (
+      xCoordinateVehicle >= xCoordinateStation3 &&
+      xCoordinateVehicle <= xCoordinateStation3 + 280 &&
+      yCoordinateVehicle >= yCoordinateStation3 
+    ) {
+      window.location = 'index4.html';
+    }
+  });
+
+  station4.addEventListener('click', () => {
+    if (
+      xCoordinateVehicle >= xCoordinateStation4 &&
+      xCoordinateVehicle <= xCoordinateStation4 + 280 &&
+      yCoordinateVehicle >= yCoordinateStation4 
+    ) {
+      window.location = 'index5.html';
+    }
+  });
 });
