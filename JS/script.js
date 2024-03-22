@@ -160,63 +160,104 @@ document.addEventListener('wheel', (event) => {
 
   //-------------------- STATION VERLINKUNG ----------------------------//
 
-  //Vehicle X-Koordinate
+  //Vehicle X/Y-Koordinate
   let vehicleRect = vehicle.getBoundingClientRect();
   let xCoordinateVehicle = vehicleRect.left;
   let yCoordinateVehicle = vehicleRect.top;
+  // console.log(yCoordinateVehicle);
 
   //Station 1 -- Erstes Minigame
   let station1 = document.getElementById('Station_1');
   var station1rect = station1.getBoundingClientRect();
   let xCoordinateStation1 = station1rect.left;
   let yCoordinateStation1 = station1rect.top;
+  // console.log(yCoordinateStation1);
+  // HiddenBox 1
+  let hiddenboxLevel1 = document.getElementById('hiddenBoxLevel1');
 
   //Station 2 -- Zweites Minigame
   let station2 = document.getElementById('Station_2');
   var station2rect = station2.getBoundingClientRect();
   let xCoordinateStation2 = station2rect.left;
   let yCoordinateStation2 = station2rect.top;
-  
+  // console.log(yCoordinateStation2);
+  // HiddenBox 2
+  let hiddenboxLevel2 = document.getElementById('hiddenBoxLevel2');
+
   //Station 3 -- Drittes Minigame
   let station3 = document.getElementById('Station_3');
   var station3rect = station3.getBoundingClientRect();
   let xCoordinateStation3 = station3rect.left;
   let yCoordinateStation3 = station3rect.top;
-
+  // HiddenBox 3
+  let hiddenboxLevel3 = document.getElementById('hiddenBoxLevel3');
 
   //Station 4 -- Viertes Minigame
   let station4 = document.getElementById('Station_4');
   var station4rect = station4.getBoundingClientRect();
   let xCoordinateStation4 = station4rect.left;
   let yCoordinateStation4 = station4rect.top;
-
+  // HiddenBox 4
+  let hiddenboxLevel4 = document.getElementById('hiddenBoxLevel4');
 
   //Vergleich für Erste Station
-  station1.addEventListener('click', () => {
-    if (
-      xCoordinateVehicle >= xCoordinateStation1 &&
-      xCoordinateVehicle <= xCoordinateStation1 + 280 &&
-      yCoordinateVehicle >= yCoordinateStation1 
-    ) {
+  // station1.addEventListener('click', () => {
+  //   if (
+  //     xCoordinateVehicle >= xCoordinateStation1 &&
+  //     xCoordinateVehicle <= xCoordinateStation1 + 280 &&
+  //     yCoordinateVehicle >= yCoordinateStation1
+  //   ) {
+  //     window.location = 'index2.html';
+  //   }
+  // });
+
+  //Funktionen die einen zu den Minigames leitet
+  function FirstLevel(e) {
+    if (e.key == 'Enter') {
       window.location = 'index2.html';
     }
-  });
-
-  station2.addEventListener('click', () => {
-    if (
-      xCoordinateVehicle >= xCoordinateStation2 &&
-      xCoordinateVehicle <= xCoordinateStation2 + 280 &&
-      yCoordinateVehicle >= yCoordinateStation2 
-    ) {
+  }
+  function SecondLevel(e) {
+    if (e.key == 'Enter') {
       window.location = 'index3.html';
     }
-  });
+  }
+
+  //Station 1
+  if (
+    xCoordinateVehicle + 150 >= xCoordinateStation1 &&
+    xCoordinateVehicle <= xCoordinateStation1 + 280 &&
+    level == 0
+  ) {
+    hiddenboxLevel1.style.display = 'block';
+    console.log('Event 1 active');
+    window.addEventListener('keypress', FirstLevel);
+  } else {
+    window.removeEventListener('keypress', FirstLevel);
+    console.log('Event1 inactive');
+    hiddenboxLevel1.style.display = 'none';
+  }
+
+  //Station 2
+  if (
+    xCoordinateVehicle + 150 >= xCoordinateStation2 &&
+    xCoordinateVehicle <= xCoordinateStation2 + 280 &&
+    level == 1
+  ) {
+    hiddenboxLevel2.style.display = 'block';
+    console.log('Event 2 active');
+    window.addEventListener('keypress', SecondLevel);
+  } else {
+    window.removeEventListener('keypress', SecondLevel);
+    console.log('Event 2 inavtive');
+    hiddenboxLevel2.style.display = 'none';
+  }
 
   station3.addEventListener('click', () => {
     if (
       xCoordinateVehicle >= xCoordinateStation3 &&
       xCoordinateVehicle <= xCoordinateStation3 + 280 &&
-      yCoordinateVehicle >= yCoordinateStation3 
+      yCoordinateVehicle >= yCoordinateStation3
     ) {
       window.location = 'index4.html';
     }
@@ -226,7 +267,7 @@ document.addEventListener('wheel', (event) => {
     if (
       xCoordinateVehicle >= xCoordinateStation4 &&
       xCoordinateVehicle <= xCoordinateStation4 + 280 &&
-      yCoordinateVehicle >= yCoordinateStation4 
+      yCoordinateVehicle >= yCoordinateStation4
     ) {
       window.location = 'index5.html';
     }
