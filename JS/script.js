@@ -28,15 +28,21 @@ let ebenen = 4; // Gesamtanzahl Ebenen
 const levelHeight = 100 / ebenen; // Höhe jeder Ebene in vh (Viewport Height), für 4 Ebenen
 
 //  //-------------------- AUDIO VARIABLES ----------------------------//
-var engineAudio = new Audio('/audio/EngineSound.mp3');
-var level0Audio = new Audio('/audio/Level0Background.mp3');
-var level1Audio = new Audio('/audio/Level1Background.mp3');
-var level2Audio = new Audio('/audio/Level2Background.mp3');
-var level3Audio = new Audio('/audio/Level3Background.mp3');
+var engineAudio = new Audio('/audio/BackgroundNoises/EngineSound.mp3');
+var level0Audio = new Audio('/audio/BackgroundNoises/Level0Background.mp3');
+var level1Audio = new Audio('/audio/BackgroundNoises/Level1Background.mp3');
+var level2Audio = new Audio('/audio/BackgroundNoises/Level2Background.mp3');
+var level3Audio = new Audio('/audio/BackgroundNoises/Level3Background.mp3');
 let isPLayingSound1 = false;
 let isPLayingSound2 = false;
 let isPLayingSound3 = false;
 let isPLayingSound4 = false;
+
+//AI Voices 
+var station1_AI_Voice = new Audio("./audio/AI-Voices/Station1_Ai_Voice.mp3")
+var station2_AI_Voice = new Audio("./audio/AI-Voices/Station2_Ai_Voice.mp3")
+var station3_AI_Voice = new Audio("./audio/AI-Voices/Station3_Ai_Voice.mp3")
+var station4_AI_Voice = new Audio("./audio/AI-Voices/Station4_Ai_Voice.mp3")
 
 //-------------------- MOUSE WHEEL EVENT ----------------------------//
 
@@ -160,18 +166,16 @@ document.addEventListener('wheel', (event) => {
 
   //-------------------- STATION VERLINKUNG ----------------------------//
 
-  //Vehicle X/Y-Koordinate
+  //Vehicle X-Koordinate
   let vehicleRect = vehicle.getBoundingClientRect();
   let xCoordinateVehicle = vehicleRect.left;
-  let yCoordinateVehicle = vehicleRect.top;
-  // console.log(yCoordinateVehicle);
+
 
   //Station 1 -- Erstes Minigame
   let station1 = document.getElementById('Station_1');
   var station1rect = station1.getBoundingClientRect();
   let xCoordinateStation1 = station1rect.left;
-  let yCoordinateStation1 = station1rect.top;
-  // console.log(yCoordinateStation1);
+
   // HiddenBox 1
   let hiddenboxLevel1 = document.getElementById('hiddenBoxLevel1');
 
@@ -179,8 +183,6 @@ document.addEventListener('wheel', (event) => {
   let station2 = document.getElementById('Station_2');
   var station2rect = station2.getBoundingClientRect();
   let xCoordinateStation2 = station2rect.left;
-  let yCoordinateStation2 = station2rect.top;
-  // console.log(yCoordinateStation2);
   // HiddenBox 2
   let hiddenboxLevel2 = document.getElementById('hiddenBoxLevel2');
 
@@ -188,7 +190,6 @@ document.addEventListener('wheel', (event) => {
   let station3 = document.getElementById('Station_3');
   var station3rect = station3.getBoundingClientRect();
   let xCoordinateStation3 = station3rect.left;
-  let yCoordinateStation3 = station3rect.top;
   // HiddenBox 3
   let hiddenboxLevel3 = document.getElementById('hiddenBoxLevel3');
 
@@ -196,24 +197,13 @@ document.addEventListener('wheel', (event) => {
   let station4 = document.getElementById('Station_4');
   var station4rect = station4.getBoundingClientRect();
   let xCoordinateStation4 = station4rect.left;
-  let yCoordinateStation4 = station4rect.top;
   // HiddenBox 4
   let hiddenboxLevel4 = document.getElementById('hiddenBoxLevel4');
 
-  //Vergleich für Erste Station
-  // station1.addEventListener('click', () => {
-  //   if (
-  //     xCoordinateVehicle >= xCoordinateStation1 &&
-  //     xCoordinateVehicle <= xCoordinateStation1 + 280 &&
-  //     yCoordinateVehicle >= yCoordinateStation1
-  //   ) {
-  //     window.location = 'index2.html';
-  //   }
-  // });
-
+  
   //Funktionen die einen zu den Minigames leitet
 
-  //Standard Eventlistenet to override the last one
+  //Standard EventListener to return to Start page if the User clicks outside of any GameArea (Minigame)  
   function ReturnToStart(e){
     if(e.key == "Enter"){
       window.location = "";
@@ -246,25 +236,65 @@ document.addEventListener('wheel', (event) => {
     xCoordinateVehicle <= xCoordinateStation1 + 280 &&
     level == 0
   ) {
+
+    //Unhide info box
     hiddenboxLevel1.style.display = 'block';
+    //Add Event
     window.addEventListener('keypress', FirstLevel);
+    
+    //---Noises---//
+    //Lower Background sounds
+    level0Audio.volume = 0.1;
+    engineAudio.volume = 0.015;
+
+    //Start AI Voice 
+    station1_AI_Voice.play();
+    station1_AI_Voice.volume = 0.7;
+
   } else {
     window.addEventListener('keypress', ReturnToStart);
     hiddenboxLevel1.style.display = 'none';
+    //Reset AI Voice
+    station1_AI_Voice.pause();
+    station1_AI_Voice.currentTime = 0;
+    //Set volume of Background noises to default
+    level0Audio.volume = 0.2;
+    engineAudio.volume = 0.03;
   }
 
-  //Station 2
+//Station 2
+
   if (
     xCoordinateVehicle + 150 >= xCoordinateStation2 &&
     xCoordinateVehicle <= xCoordinateStation2 + 280 &&
     level == 1
   ) {
+
+    //Unhide info box
     hiddenboxLevel2.style.display = 'block';
+    //Add Event
     window.addEventListener('keypress', SecondLevel);
+    
+    //---Noises---//
+    //Lower Background sounds
+    level1Audio.volume = 0.1;
+    engineAudio.volume = 0.015;
+
+    //Start AI Voice 
+    station2_AI_Voice.play();
+    station2_AI_Voice.volume = 0.7;
+
   } else {
     window.addEventListener('keypress', ReturnToStart);
     hiddenboxLevel2.style.display = 'none';
+    //Reset AI Voice
+    station2_AI_Voice.pause();
+    station2_AI_Voice.currentTime = 0;
+    //Set volume of Background noises to default
+    level1Audio.volume = 0.2;
+    engineAudio.volume = 0.03;
   }
+
 
 //Station 3
 if (
@@ -274,9 +304,25 @@ if (
 ) {
   hiddenboxLevel3.style.display = 'block';
   window.addEventListener('keypress', ThirdLevel);
+
+  //---Noises---//
+  //Lower Background sounds
+  level2Audio.volume = 0.1;
+  engineAudio.volume = 0.015;
+
+   //Start AI Voice 
+   station3_AI_Voice.play();
+   station3_AI_Voice.volume = 0.7;
 } else {
   window.addEventListener('keypress', ReturnToStart);
   hiddenboxLevel3.style.display = 'none';
+
+  //Reset AI Voice
+  station3_AI_Voice.pause();
+  station3_AI_Voice.currentTime = 0;
+  //Set volume of Background noises to default
+  level2Audio.volume = 0.2;
+  engineAudio.volume = 0.03;
 }
 
 //Station 4
@@ -287,9 +333,26 @@ if (
 ) {
   hiddenboxLevel4.style.display = 'block';
   window.addEventListener('keypress', FourthLevel);
+
+  //---Noises---//
+  //Lower Background sounds
+  level3Audio.volume = 0.1;
+  engineAudio.volume = 0.015;
+
+  //Start AI Voice 
+  station4_AI_Voice.play();
+  station4_AI_Voice.volume = 0.7;
 } else {
   window.addEventListener('keypress', ReturnToStart);
   hiddenboxLevel4.style.display = 'none';
+
+  //Reset AI Voice
+  station4_AI_Voice.pause();
+  station4_AI_Voice.currentTime = 0;
+
+  //Set volume of Background noises to default
+  level3Audio.volume = 0.2;
+  engineAudio.volume = 0.03;
 }
  
 });
