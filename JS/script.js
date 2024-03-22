@@ -212,6 +212,13 @@ document.addEventListener('wheel', (event) => {
   // });
 
   //Funktionen die einen zu den Minigames leitet
+
+  //Standard Eventlistenet to override the last one
+  function ReturnToStart(e){
+    if(e.key == "Enter"){
+      window.location = "";
+    }
+  }
   function FirstLevel(e) {
     if (e.key == 'Enter') {
       window.location = 'index2.html';
@@ -222,6 +229,16 @@ document.addEventListener('wheel', (event) => {
       window.location = 'index3.html';
     }
   }
+  function ThirdLevel(e) {
+    if (e.key == 'Enter') {
+      window.location = 'index4.html';
+    }
+  }
+  function FourthLevel(e) {
+    if (e.key == 'Enter') {
+      window.location = 'index5.html';
+    }
+  }
 
   //Station 1
   if (
@@ -230,11 +247,9 @@ document.addEventListener('wheel', (event) => {
     level == 0
   ) {
     hiddenboxLevel1.style.display = 'block';
-    console.log('Event 1 active');
     window.addEventListener('keypress', FirstLevel);
   } else {
-    window.removeEventListener('keypress', FirstLevel);
-    console.log('Event1 inactive');
+    window.addEventListener('keypress', ReturnToStart);
     hiddenboxLevel1.style.display = 'none';
   }
 
@@ -245,31 +260,36 @@ document.addEventListener('wheel', (event) => {
     level == 1
   ) {
     hiddenboxLevel2.style.display = 'block';
-    console.log('Event 2 active');
     window.addEventListener('keypress', SecondLevel);
   } else {
-    window.removeEventListener('keypress', SecondLevel);
-    console.log('Event 2 inavtive');
+    window.addEventListener('keypress', ReturnToStart);
     hiddenboxLevel2.style.display = 'none';
   }
 
-  station3.addEventListener('click', () => {
-    if (
-      xCoordinateVehicle >= xCoordinateStation3 &&
-      xCoordinateVehicle <= xCoordinateStation3 + 280 &&
-      yCoordinateVehicle >= yCoordinateStation3
-    ) {
-      window.location = 'index4.html';
-    }
-  });
+//Station 3
+if (
+  xCoordinateVehicle + 150 >= xCoordinateStation3 &&
+  xCoordinateVehicle <= xCoordinateStation3 + 280 &&
+  level == 2
+) {
+  hiddenboxLevel3.style.display = 'block';
+  window.addEventListener('keypress', ThirdLevel);
+} else {
+  window.addEventListener('keypress', ReturnToStart);
+  hiddenboxLevel3.style.display = 'none';
+}
 
-  station4.addEventListener('click', () => {
-    if (
-      xCoordinateVehicle >= xCoordinateStation4 &&
-      xCoordinateVehicle <= xCoordinateStation4 + 280 &&
-      yCoordinateVehicle >= yCoordinateStation4
-    ) {
-      window.location = 'index5.html';
-    }
-  });
+//Station 4
+if (
+  xCoordinateVehicle + 150 >= xCoordinateStation4 &&
+  xCoordinateVehicle <= xCoordinateStation4 + 280 &&
+  level == 3
+) {
+  hiddenboxLevel4.style.display = 'block';
+  window.addEventListener('keypress', FourthLevel);
+} else {
+  window.addEventListener('keypress', ReturnToStart);
+  hiddenboxLevel4.style.display = 'none';
+}
+ 
 });
