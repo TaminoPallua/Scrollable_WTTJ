@@ -251,7 +251,7 @@ document.addEventListener('wheel', (event) => {
     station1_AI_Voice.play();
     station1_AI_Voice.volume = 0.7;
 
-  } else {
+  } else if(level == 0){
     window.addEventListener('keypress', ReturnToStart);
     hiddenboxLevel1.style.display = 'none';
     //Reset AI Voice
@@ -284,7 +284,7 @@ document.addEventListener('wheel', (event) => {
     station2_AI_Voice.play();
     station2_AI_Voice.volume = 0.7;
 
-  } else {
+  } else if(level == 1){
     window.addEventListener('keypress', ReturnToStart);
     hiddenboxLevel2.style.display = 'none';
     //Reset AI Voice
@@ -313,7 +313,7 @@ if (
    //Start AI Voice 
    station3_AI_Voice.play();
    station3_AI_Voice.volume = 0.7;
-} else {
+} else if(level == 2){
   window.addEventListener('keypress', ReturnToStart);
   hiddenboxLevel3.style.display = 'none';
 
@@ -342,7 +342,7 @@ if (
   //Start AI Voice 
   station4_AI_Voice.play();
   station4_AI_Voice.volume = 0.7;
-} else {
+} else if(level == 3){
   window.addEventListener('keypress', ReturnToStart);
   hiddenboxLevel4.style.display = 'none';
 
